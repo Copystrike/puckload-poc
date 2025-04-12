@@ -19,6 +19,7 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@measured/puck": "^0.18.3",
     "@payloadcms/admin-bar": "3.33.0",
     "@payloadcms/db-mongodb": "3.33.0",
     "@payloadcms/live-preview-react": "3.33.0",

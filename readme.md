@@ -40,7 +40,7 @@ After cloning the repository, follow these steps to set up the project:
 1. **Install Dependencies**:  
    Run `pnpm install` to install all necessary dependencies.
 
-2. **Run docker-compose up -d**:  
+2. **Run docker compose up -d**:  
    This command will start the development environment.
 
 3. **Run pnpm mongodb restore**:  (Execute this command 2 times, it needs to create a folder in the first run)

@@ -64,6 +64,7 @@ export const Pages: CollectionConfig<'pages'> = {
       type: 'text',
       required: true,
     },
+    puckBuilderField(),
     {
       type: 'tabs',
       tabs: [
@@ -71,23 +72,21 @@ export const Pages: CollectionConfig<'pages'> = {
           fields: [hero],
           label: 'Hero',
         },
-        {
-          fields: [
-            // How it used to work
-            // {
-            //   name: 'layout',
-            //   type: 'blocks',
-            //   blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
-            //   required: true,
-            //   admin: {
-            //     initCollapsed: true,
-            //   },
-            // },
-
-            puckBuilderField(),
-          ],
-          label: 'Content',
-        },
+        // {
+        // fields: [
+        // How it used to work
+        // {
+        //   name: 'layout',
+        //   type: 'blocks',
+        //   blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+        //   required: true,
+        //   admin: {
+        //     initCollapsed: true,
+        //   },
+        // },
+        //   ],
+        //   label: 'Content',
+        // },
         {
           name: 'meta',
           label: 'SEO',

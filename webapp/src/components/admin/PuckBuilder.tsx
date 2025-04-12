@@ -16,29 +16,58 @@ const PuckBuilder: React.FC = () => {
   }, [router, startRouteTransition])
 
   return (
-    <div style={{ padding: '1rem', border: '1px solid #ddd', borderRadius: '8px' }}>
+    <div
+      style={{
+        padding: '1.5rem',
+        border: '1px solid #e0e0e0',
+        borderRadius: '8px',
+        backgroundColor: '#f9f9f9',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+      }}
+    >
+      <h4 style={{ marginTop: 0, marginBottom: '1rem', color: '#333' }}>Visual Page Builder</h4>
       <button
         style={{
-          padding: '0.5rem 1rem',
-          fontSize: '1rem', // Reduced font size for text
-          backgroundColor: '#111',
+          padding: '0.75rem 1.5rem',
+          fontSize: '1rem',
+          backgroundColor: '#000',
           color: '#fff',
           border: 'none',
-          borderRadius: '4px',
+          borderRadius: '6px',
           cursor: 'pointer',
-          display: 'flex', // Flexbox for alignment
-          alignItems: 'center', // Center align text and logo
-          gap: '0.5rem', // Spacing between text and logo
-          transition: 'background-color 0.3s', // Smooth transition for hover effect
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          transition: 'background-color 0.2s, box-shadow 0.2s, transform 0.1s ease-out', // Refined transitions
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.1)', // More pronounced shadow for depth
         }}
-        onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#333')} // Darker background on hover
-        onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#111')} // Reset background on mouse out
+        onMouseOver={(e) => {
+          e.currentTarget.style.backgroundColor = '#333' // Lighter on hover
+          e.currentTarget.style.boxShadow =
+            '0 4px 8px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.1)' // Lift shadow on hover
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.backgroundColor = '#000' // Reset background
+          e.currentTarget.style.boxShadow =
+            '0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.1)' // Reset shadow
+          e.currentTarget.style.transform = 'translateY(0)' // Ensure transform resets if mouse leaves during active state
+        }}
+        onMouseDown={(e) => {
+          e.currentTarget.style.backgroundColor = '#222' // Darker when pressed
+          e.currentTarget.style.boxShadow =
+            'inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 1px rgba(0, 0, 0, 0.1)' // Inset shadow for pressed effect
+          e.currentTarget.style.transform = 'translateY(1px)' // Simulate pressing down
+        }}
         onClick={handleClick}
       >
-        Build using
+        Open {/* Clear action text */}
         <PuckLogo />
       </button>
-      <p style={{ marginTop: '1rem' }}>Use this button to open the Puck Builder in a new route.</p>
+      <p style={{ marginTop: '1rem', color: '#555', fontSize: '0.9rem', lineHeight: '1.5' }}>
+        The visual editor for React. Puck empowers developers to build amazing visual editing
+        experiences into their own React applications, powering the next generation of content
+        tools, no-code builders and WYSIWYG editors.
+      </p>
     </div>
   )
 }

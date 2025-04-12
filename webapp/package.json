@@ -21,6 +21,7 @@
     "mongodb:restore": "node ./build-tools/mongo-tools.mjs restore"
   },
   "dependencies": {
+    "@dotenvx/dotenvx": "^1.39.1",
     "@measured/puck": "^0.18.3",
     "@payloadcms/admin-bar": "3.33.0",
     "@payloadcms/db-mongodb": "3.33.0",

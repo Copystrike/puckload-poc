@@ -20,6 +20,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { puckBuilderField } from '@/fields/PuckBuilderField'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -72,15 +73,18 @@ export const Pages: CollectionConfig<'pages'> = {
         },
         {
           fields: [
-            {
-              name: 'layout',
-              type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
-              required: true,
-              admin: {
-                initCollapsed: true,
-              },
-            },
+            // How it used to work
+            // {
+            //   name: 'layout',
+            //   type: 'blocks',
+            //   blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+            //   required: true,
+            //   admin: {
+            //     initCollapsed: true,
+            //   },
+            // },
+
+            puckBuilderField(),
           ],
           label: 'Content',
         },

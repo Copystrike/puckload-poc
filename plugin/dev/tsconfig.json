@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.json",
+  "exclude": [],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "../src/**/*.ts",
+    "../src/**/*.tsx",
+    "next.config.mjs",
+    ".next/types/**/*.ts"
+  ],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@payload-config": ["./payload.config.ts"],
+      "@/fields/*": ["../dev/fields/*"],
+      "@puck/puck-editor/PuckEditor": ["../src/exports/PuckEditor.ts"]
+    },
+    "noEmit": true
+  }
+}

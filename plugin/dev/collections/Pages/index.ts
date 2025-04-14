@@ -1,7 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
 import { PuckBuilderField } from '@puck/puck-editor/PuckEditor'
-import { generatePreviewPath } from 'helpers/generatePreviewPath.js'
 
 import { slugField } from '../../fields/slug/index.js'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt.js'
@@ -11,23 +10,23 @@ export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    livePreview: {
-      url: ({ data, req }) => {
-        const path = generatePreviewPath({
-          slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'pages',
-          req,
-        })
+    // livePreview: {
+    //   url: ({ data, req }) => {
+    //     const path = generatePreviewPath({
+    //       slug: typeof data?.slug === 'string' ? data.slug : '',
+    //       collection: 'pages',
+    //       req,
+    //     })
 
-        return path
-      },
-    },
-    preview: (data, { req }) =>
-      generatePreviewPath({
-        slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'pages',
-        req,
-      }),
+    //     return path
+    //   },
+    // },
+    // preview: (data, { req }) =>
+    //   generatePreviewPath({
+    //     slug: typeof data?.slug === 'string' ? data.slug : '',
+    //     collection: 'pages',
+    //     req,
+    //   }),
     useAsTitle: 'title',
   },
   defaultPopulate: {

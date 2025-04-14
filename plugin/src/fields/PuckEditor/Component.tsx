@@ -1,30 +1,55 @@
 'use client'
 
-import { useRouteTransition } from '@payloadcms/ui'
-import { useRouter } from 'next/navigation.js'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
-import styles from './puckEditorField.module.css'
+import { PuckBuilderOverlay } from './PuckBuilderOverlay.js'
+import './styles.css'
 
 export const PuckEditorComponent: React.FC = () => {
-  const router = useRouter()
-  const { startRouteTransition } = useRouteTransition()
+  const [isOpen, setIsOpen] = React.useState(false)
 
   const handleClick = useCallback(() => {
-    startRouteTransition(() => {
-      // This corresponds with the /app/admin/puck-builder/page.tsx
-      router.push('/admin/puck-builder')
-    })
-  }, [router, startRouteTransition])
+    setIsOpen((prev) => !prev)
+  }, [])
+
+  useEffect(() => {
+    // if open
+    if (isOpen) {
+      // hide collection-edit__form
+      const formElement = document.querySelector('.collection-edit__form') as HTMLElement
+      if (formElement) {
+        formElement.style.display = 'none'
+      }
+    } else {
+      // show collection-edit__form
+      const formElement = document.querySelector('.collection-edit__form') as HTMLElement
+      if (formElement) {
+        formElement.style.display = 'block'
+      }
+    }
+  }, [isOpen])
+
+  if (isOpen) {
+    return (
+      <div className="document-fields--puck-editor">
+        <h4 className={'heading'}>Visual Page Builder</h4>
+        <button className={'button'} onClick={handleClick} type="button">
+          Close Puck Editor
+          <PuckLogo />
+        </button>
+        <PuckBuilderOverlay close={handleClick} />
+      </div>
+    )
+  }
 
   return (
-    <div className={styles.container}>
-      <h4 className={styles.heading}>Visual Page Builder</h4>
-      <button className={styles.button} onClick={handleClick} type="button">
-        Open {/* Clear action text */}
+    <div className={'container'}>
+      <h4 className={'heading'}>Visual Page Builder</h4>
+      <button className={'button'} onClick={handleClick} type="button">
+        Open Puck Editor
         <PuckLogo />
       </button>
-      <p className={styles.description}>
+      <p className={'description'}>
         The visual editor for React. Puck empowers developers to build amazing visual editing
         experiences into their own React applications, powering the next generation of content
         tools, no-code builders and WYSIWYG editors.
@@ -35,7 +60,7 @@ export const PuckEditorComponent: React.FC = () => {
 
 const PuckLogo = () => (
   <svg
-    className={styles.logo}
+    className={'logo'}
     fill="currentColor"
     height="25"
     viewBox="0 0 1300 326"

@@ -5,6 +5,7 @@ import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
+import { puckEditorPlugin } from '../src/index.js'
 import { Pages } from './collections/Pages/index.js'
 import { devUser } from './helpers/credentials.js'
 import { testEmailAdapter } from './helpers/testEmailAdapter.js'
@@ -47,11 +48,7 @@ export default buildConfig({
     await seed(payload)
   },
   plugins: [
-    // puckEditorPlugin({
-    //   collections: {
-    //     posts: true,
-    //   },
-    // }),
+    puckEditorPlugin(),
   ],
   secret: process.env.PAYLOAD_SECRET || 'test-secret_key',
   sharp,
